@@ -4,25 +4,25 @@
     ViewData["Title"] = "Books";
 }
 
-<h1>Books</h1>
+    <h1> @Html.DisplayFor(modelItem => Model.results.list_name) Top 15 List</h1>
 
-<p>
+@*<p>
     <a asp-action="Create">Create New</a>
-</p>
+</p>*@
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.status)
+                Rank
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.copyright)
+                Rank Last Week
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.num_results)
+               Book Title
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.last_modified)
+                Author
             </th>
             <th></th>
         </tr>
@@ -31,22 +31,26 @@
 @foreach (var item in Model.results.books) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.rank)
+            </td>
+            <td>
+                @if (item.rank_last_week == 0)
+                {
+                    <text>New Entry</text>
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.rank_last_week)
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.author)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.num_results)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.last_modified)
-            </td>*@
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+
+            
         </tr>
 }
     </tbody>
