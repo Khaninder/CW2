@@ -1,0 +1,46 @@
+﻿@model Book_Category
+
+@{
+    ViewData["Title"] = "Books_Category";
+}
+
+<h1>Books_Category</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.copyright)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.num_results)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.results) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.display_name)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.copyright)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.num_results)
+            </td>*@
+        <td>
+            @Html.ActionLink("View Books", "Books", "Home", new { category = item.list_name_encoded }, null);
+
+        </td>
+        </tr>
+}
+    </tbody>
+</table>
