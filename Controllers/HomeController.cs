@@ -44,7 +44,13 @@ namespace CW2.Controllers
 
             return View(booksCategory);
         }
+        public IActionResult Buy_Links(string category)
+        {
+            APIHandler webHandler = new APIHandler();
+            Rootobject books = webHandler.GetBooks(category);
 
+            return View(books);
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

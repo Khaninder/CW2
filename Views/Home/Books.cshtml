@@ -49,6 +49,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.author)
             </td>
+            <td>
+               <button> @Html.ActionLink("Buy Book", "Buy_Links", "Home", new { category = Model.results.list_name_encoded }, null)</button>
+
+
+            </td>
 
             
         </tr>
