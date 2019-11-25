@@ -37,6 +37,18 @@ namespace CW2.Controllers
 
             return View(books);
         }
+        public IActionResult ViewChart(string category)
+        {
+            APIHandler webHandler = new APIHandler();
+            Rootobject books = webHandler.GetBooks(category);
+            List<DataPoint> dataPoints = new List<DataPoint>();
+            for(int i = 0; i < books.num_results; i++)
+            {
+                dataPoints.Add(new DataPoint(books.results.books[i].rank, books.results.books[i].weeks_on_list));
+            }
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+            return View(books);
+        }
         public IActionResult Books_Category()
         {
             APIHandler webHandler = new APIHandler();
@@ -44,6 +56,7 @@ namespace CW2.Controllers
 
             return View(booksCategory);
         }
+        
         //public IActionResult Buy_Links(string category)
         //{
         //    APIHandler webHandler = new APIHandler();

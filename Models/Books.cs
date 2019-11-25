@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,6 +28,8 @@ namespace CW2.Models
 
     public class Rootobject
     {
+        [Key]
+        public int ID { get; set; }
         public string status { get; set; }
         public string copyright { get; set; }
         public int num_results { get; set; }
@@ -52,6 +55,8 @@ namespace CW2.Models
 
     public class Book
     {
+        [Key]
+        public int ID { get; set; }
         public int rank { get; set; }
         public int rank_last_week { get; set; }
         public int weeks_on_list { get; set; }
@@ -82,14 +87,32 @@ namespace CW2.Models
 
     public class Isbn
     {
+        [Key]
+        public int ID { get; set; }
         public string isbn10 { get; set; }
         public string isbn13 { get; set; }
     }
 
     public class Buy_Links
     {
+        [Key]
+        public int ID { get; set; }
         public string name { get; set; }
         public string url { get; set; }
+    }
+    public class DataPoint
+    {
+        [Key]
+        public int ID { get; set; }
+        public int x { get; set; }
+        public int y { get; set; }
+
+        public DataPoint(int Rank, int WeeksOnList)
+        {
+
+            x = Rank;
+            y = WeeksOnList;
+        }
     }
 
 }

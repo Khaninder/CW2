@@ -41,7 +41,7 @@
             </td>
             <td>
                 <!-- View Chart code will come here -->
-                <button>View Chart</button>
+                <button>@Html.ActionLink("View Chart","ViewChart","Home",new { category=item.list_name_encoded},null)</button>
 
             </td>
         </tr>
