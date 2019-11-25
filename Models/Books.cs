@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -39,6 +40,8 @@ namespace CW2.Models
 
     public class Results
     {
+        [Key]
+        public int ID { get; set; }
         public string list_name { get; set; }
         public string list_name_encoded { get; set; }
         public string bestsellers_date { get; set; }
@@ -50,6 +53,7 @@ namespace CW2.Models
         public int normal_list_ends_at { get; set; }
         public string updated { get; set; }
         public Book[] books { get; set; }
+        [NotMapped]
         public object[] corrections { get; set; }
     }
 

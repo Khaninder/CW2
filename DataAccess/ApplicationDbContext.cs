@@ -17,7 +17,6 @@ namespace CW2.DataAccess
         public DbSet<Book> B { get; set; }
         public DbSet<Isbn> Isb { get; set; }
         public DbSet<Buy_Links> b_link { get; set; }
-        public DbSet<DataPoint> dP { get; set; }
     }
 }
 
